@@ -76,17 +76,6 @@ int Y_MAX = 0;
 int X_MAXW = 0;
 int Y_MAXW = 0;
 
-int car = 0;
-
-// Pins for car control
-#define CAR_FWD 9
-#define CAR_BACK 11
-#define CAR_LEFT 8
-#define CAR_RIGHT 10
-#define FWD_TURN_TIME 600 
-#define BACK_TURN_TIME 600
-#define DRIVE_TIME 250 
-
 //serial in stuff
 #define INLENGTH 162
 char inString[INLENGTH+1];
@@ -227,63 +216,6 @@ void loop()
         minLeft = 0 - (strlen(inString)*6);
       }
 
-      if (strstr(inString,"car")) {
-        if (strlen(inString) > 3) {
-          char car_cmd = inString[3];
-
-          switch (car_cmd){
-          case '1':
-            digitalWrite(CAR_LEFT, HIGH);
-            digitalWrite(CAR_FWD, HIGH);
-            delay(FWD_TURN_TIME);
-            digitalWrite(CAR_LEFT, LOW);
-            digitalWrite(CAR_FWD, LOW);
-            break;
-          case '2':
-            digitalWrite(CAR_RIGHT, HIGH);
-            digitalWrite(CAR_FWD, HIGH);
-            delay(FWD_TURN_TIME);
-            digitalWrite(CAR_RIGHT, LOW);
-            digitalWrite(CAR_FWD, LOW);
-            break;
-          case '3':
-            digitalWrite(CAR_LEFT, HIGH);
-            digitalWrite(CAR_BACK, HIGH);
-            delay(BACK_TURN_TIME);
-            digitalWrite(CAR_LEFT, LOW);
-            digitalWrite(CAR_BACK, LOW);
-            break;
-          case '4':
-            digitalWrite(CAR_RIGHT, HIGH);
-            digitalWrite(CAR_BACK, HIGH);
-            delay(BACK_TURN_TIME);
-            digitalWrite(CAR_RIGHT, LOW);
-            digitalWrite(CAR_BACK, LOW);
-            break;
-          case '5':
-            digitalWrite(CAR_FWD, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_FWD, LOW);
-            break;
-          case '6':
-            digitalWrite(CAR_BACK, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_BACK, LOW);                  
-            break;
-          case '7':
-            digitalWrite(CAR_LEFT, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_LEFT, LOW);
-            break;
-          case '8':
-            digitalWrite(CAR_RIGHT, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_RIGHT, LOW);                  
-            break;
-          }
-        }
-      }
-
       disp.clear();
       drawString(x,0,inString);
       disp.syncDisplays(); 
@@ -291,63 +223,6 @@ void loop()
       Serial.print("Displaying: ");
       Serial.println(inString);
       if (scrolling) timedAction.enable();
-    }
-    
-    if (strstr(inString,"car")) {
-      if (strlen(inString) > 3) {
-        char car_cmd = inString[3];
-
-	switch (car_cmd){
-          case '1':
-	    digitalWrite(CAR_LEFT, HIGH);
-	    digitalWrite(CAR_FWD, HIGH);
-	    delay(FWD_TURN_TIME);
-	    digitalWrite(CAR_LEFT, LOW);
-	    digitalWrite(CAR_FWD, LOW);
-	    break;
-          case '2':
-            digitalWrite(CAR_RIGHT, HIGH);
-            digitalWrite(CAR_FWD, HIGH);
-            delay(FWD_TURN_TIME);
-            digitalWrite(CAR_RIGHT, LOW);
-            digitalWrite(CAR_FWD, LOW);
-            break;
-          case '3':
-            digitalWrite(CAR_LEFT, HIGH);
-            digitalWrite(CAR_BACK, HIGH);
-            delay(BACK_TURN_TIME);
-            digitalWrite(CAR_LEFT, LOW);
-            digitalWrite(CAR_BACK, LOW);
-            break;
-          case '4':
-            digitalWrite(CAR_RIGHT, HIGH);
-            digitalWrite(CAR_BACK, HIGH);
-            delay(BACK_TURN_TIME);
-            digitalWrite(CAR_RIGHT, LOW);
-            digitalWrite(CAR_BACK, LOW);
-            break;
-          case '5':
-            digitalWrite(CAR_FWD, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_FWD, LOW);
-            break;
-          case '6':
-            digitalWrite(CAR_BACK, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_BACK, LOW);                  
-            break;
-          case '7':
-            digitalWrite(CAR_LEFT, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_LEFT, LOW);
-            break;
-          case '8':
-            digitalWrite(CAR_RIGHT, HIGH);
-            delay(DRIVE_TIME);
-            digitalWrite(CAR_RIGHT, LOW);                  
-            break;
-	}
-      }
     }
 
     disp.clear();
