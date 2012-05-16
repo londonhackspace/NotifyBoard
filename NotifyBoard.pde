@@ -76,7 +76,6 @@ int Y_MAX = 0;
 int X_MAXW = 0;
 int Y_MAXW = 0;
 
-int jonty = 0;
 int car = 0;
 
 // Pins for car control
@@ -228,12 +227,6 @@ void loop()
         minLeft = 0 - (strlen(inString)*6);
       }
 
-
-      if (strstr(inString,"jonty"))
-        digitalWrite(13, HIGH);       // turn on pullup resistors
-      else
-        digitalWrite(13, LOW);       // turn on pullup resistors
-
       if (strstr(inString,"car")) {
         if (strlen(inString) > 3) {
           char car_cmd = inString[3];
@@ -300,11 +293,6 @@ void loop()
       if (scrolling) timedAction.enable();
     }
     
-    if (strstr(inString,"jonty"))
-      digitalWrite(13, HIGH);       // turn on pullup resistors
-    else
-      digitalWrite(13, LOW);       // turn on pullup resistors
-
     if (strstr(inString,"car")) {
       if (strlen(inString) > 3) {
         char car_cmd = inString[3];
