@@ -8,6 +8,16 @@ cd arduino-0021/libraries
 wget http://arduino.cc/playground/uploads/Code/TimedAction-1_6.zip
 unzip TimedAction-1_6.zip
 
+#
+# For compatability with ardunio 1.0
+#
+# in the TimedAction folder edit TimedAction.h and changed the #include
+# "Wprogram.h" to "Arduino.h"
+#
+# and in the MatrixDisplay library change
+# the reference to "wireing.h" to "Arduino.h" in MatrixDisplay.h
+#
+
 git clone https://github.com/solexious/MatrixDisplay
 
 popd
