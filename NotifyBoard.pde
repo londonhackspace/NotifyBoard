@@ -534,7 +534,7 @@ void initText(void)
   disp.syncDisplays(); 
   fadeIn();
   disp.clear();
-  drawString(0,0,"NotificationBoard 0.4");
+  drawString(0,0,"NotificationBoard 0.5");
   disp.syncDisplays(); 
   fadeIn();
   disp.clear();
