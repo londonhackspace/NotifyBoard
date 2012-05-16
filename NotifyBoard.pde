@@ -189,7 +189,7 @@ void loop()
     inCount = 0;
     do {
       inSerialString[inCount] = Serial.read(); // get it
-      if (inSerialString[inCount] == 10) break;
+      if (inSerialString[inCount] == 10 || inSerialString[inCount] == 13 || inSerialString[inCount] == 0) break; // 0x0a or 0x0d aka LF or CR, or NULL
       if (inCount > INLENGTH) break;
       //Serial.println(inString[inCount]); 
       if (inSerialString[inCount] > 0 ) inCount++;
@@ -534,7 +534,7 @@ void initText(void)
   disp.syncDisplays(); 
   fadeIn();
   disp.clear();
-  drawString(0,0,"NotificationBoard 0.4");
+  drawString(0,0,"NotificationBoard 0.5");
   disp.syncDisplays(); 
   fadeIn();
   disp.clear();
